@@ -1,1 +1,1 @@
-web: gunicorn venv.Lib.site-packages.django.core.wsgi --log-file -
+web: gunicorn main:app
