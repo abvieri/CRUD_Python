@@ -1,1 +1,1 @@
-web: gunicorn CRUD_Python.wsgi --log-file -
+web: gunicorn venv/Lib/site-packages/django/core.wsgi --log-file -
