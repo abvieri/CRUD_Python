@@ -74,6 +74,7 @@ WSGI_APPLICATION = 'CRUD.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(default=os.getenv('postgresql://crudpython_ejl8_user:YwD8vhsb6UdkNUHncZPG9HjgRxZjoHjm@dpg-cur29h5ds78s7384etr0-a/crudpython_ejl8'))
