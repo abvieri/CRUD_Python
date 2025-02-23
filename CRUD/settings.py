@@ -77,9 +77,11 @@ WSGI_APPLICATION = 'CRUD.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('postgresql://crudpython_ejl8_user:YwD8vhsb6UdkNUHncZPG9HjgRxZjoHjm@dpg-cur29h5ds78s7384etr0-a/crudpython_ejl8'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
