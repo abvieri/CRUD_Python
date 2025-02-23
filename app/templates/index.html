@@ -13,60 +13,58 @@
 
 <body>
     <main>
-        <div class="col-8 m-auto pt-3 pb-2 text-center">
-            <h1>CRUD com Python</h1>
+        <!-- Cabeçalho -->
+        <div class="col-12 text-center py-5">
+            <h1 class="display-4">Cadastro de Clientes</h1>
+            <p class="lead">Gerencie os cadastros com facilidade</p>
         </div>
 
-        <div class="col-8 m-auto pt-4 pb-2 text-center">
-            <a href="/form" class="btn btn-success">Adicionar</a>
+        <!-- Botão Adicionar Novo -->
+        <div class="col-12 text-center mb-4">
+            <a href="/form" class="btn btn-lg btn-success">Adicionar Novo</a>
         </div>
 
-        <div class="col-8 m-auto pt-4 pb-2 text-center">
-            <form method="GET">
-                <input type="text" id="search" name="search" class="form-control" placeholder="Buscar">
+        <!-- Busca -->
+        <div class="col-12 mb-4 d-flex justify-content-center">
+            <form method="GET" class="d-flex w-50">
+                <input type="text" id="search" name="search" class="form-control" placeholder="Buscar por nome, telefone ou email">
+                <button type="submit" id="submit" class="btn btn-primary ms-2">Buscar</button>
             </form>
         </div>
 
-        <div class="col-8 m-auto pt-2 pb-2 text-center">
-            <table class="table">
-                <thead>
-                    <tr class="table-dark">
-                        <th scope="col">ID</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for dbs in db%}
-                    <tr>
-                        <th>{{dbs.id}}</th>
-                        <td>{{dbs.username}}</td>
-                        <td>{{dbs.phone}}</td>
-                        <td>{{dbs.email}}</td>
-                        <td>
-                            <a href="/view/{{dbs.id}}/" class="btn btn-dark">Visualizar</a>
-                            <a href="/edit/{{dbs.id}}/" class="btn btn-primary">Editar</a>
-                            <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-
-                </tbody>
-            </table>
+        <!-- Lista de Itens -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center container" id="item-list">
+            {% for dbs in db %}
+            <div class="col mb-4">
+                <div class="card shadow-sm rounded-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ dbs.username }}</h5>
+                        <p class="card-text"><strong>Telefone:</strong> {{ dbs.phone }}</p>
+                        <p class="card-text"><strong>Email:</strong> {{ dbs.email }}</p>
+                        <div class="d-flex justify-content-end mt-4">
+                            <a href="/view/{{ dbs.id }}/" class="btn btn-dark btn-sm">Visualizar</a>
+                            <a href="/edit/{{ dbs.id }}/" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="/delete/{{ dbs.id }}/" class="btn btn-danger btn-sm btnDel">Deletar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
 
-        <div class="pagination col-8 m-auto text-center">
-            {% if db.has_previous %}
-                <a href="?page={{db.previous_page_number}}">&lt</a>
-            {% endif %}
+        <!-- Paginação -->
+        <div class="col-12 text-center my-4">
+            <div class="btn-group">
+                {% if db.has_previous %}
+                <a href="?page={{ db.previous_page_number }}" class="btn btn-outline-secondary">&lt; Anterior</a>
+                {% endif %}
 
-            {{db.number}}
+                <span class="btn btn-outline-secondary disabled">{{ db.number }}</span>
 
-            {% if db.has_next %}
-                <a href="?page={{db.next_page_number}}">&gt</a>
-            {% endif %}
+                {% if db.has_next %}
+                <a href="?page={{ db.next_page_number }}" class="btn btn-outline-secondary">Próximo &gt;</a>
+                {% endif %}
+            </div>
         </div>
     </main>
     <script src="{% static 'javascript.js' %}"></script>

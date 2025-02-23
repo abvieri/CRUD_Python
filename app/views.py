@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 def home(request):
     data = {}
     all = User.objects.all()
-    paginator = Paginator(all, 5)
+    paginator = Paginator(all, 9)
     pages = request.GET.get('page')
 
     search = request.GET.get('search')
