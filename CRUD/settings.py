@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-u7b%7=ghtn=y10qdt48)xmjr)l)9=l6=hd-wy#au@u*n9kv+gh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['crud-python-j346.onrender.com']
+ALLOWED_HOSTS = ['crud-python-j346.onrender.com', '127.0.0.1']
 
 
 # Application definition
@@ -74,8 +74,6 @@ WSGI_APPLICATION = 'CRUD.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-import dj_database_url
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
